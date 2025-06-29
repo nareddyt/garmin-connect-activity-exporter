@@ -2,6 +2,25 @@
 
 Automatically download your Garmin Connect activities as JSON files, along with associated GPS tracks (GPX, TCX, KML) and workout data (CSV).
 
+- [Garmin Connect Activity Exporter](#garmin-connect-activity-exporter)
+  - [What You Get](#what-you-get)
+  - [Quick Start](#quick-start)
+    - [1. Set Your Credentials](#1-set-your-credentials)
+    - [2. Create Directories](#2-create-directories)
+    - [3. Run the Exporter](#3-run-the-exporter)
+  - [Running Long-Term](#running-long-term)
+  - [How It Works](#how-it-works)
+    - [When Downloads Happen](#when-downloads-happen)
+    - [Download Speed \& Safety](#download-speed--safety)
+    - [What Gets Downloaded](#what-gets-downloaded)
+    - [File Naming](#file-naming)
+    - [Filtering Activities](#filtering-activities)
+    - [Automatic Re-downloads](#automatic-re-downloads)
+    - [Smart Activity Processing](#smart-activity-processing)
+  - [Configuration](#configuration)
+    - [Required Settings](#required-settings)
+    - [Optional Settings](#optional-settings)
+
 ## What You Get
 
 The exporter downloads your activities and organizes them into folders:
@@ -46,7 +65,7 @@ export GARMIN_USERNAME=<your-garmin-email>
 export GARMIN_PASSWORD=<your-garmin-password>
 ```
 
-**NOTE:** Two-factor authentication (MFA) is not supported yet.
+🔒 **NOTE:** Two-factor authentication (MFA) is not supported yet.
 Please file a Github issue if you require MFA.
 
 ### 2. Create Directories
