@@ -30,7 +30,14 @@ jobs:
 
     - name: Run tests with pytest
       run: |
-        pytest -v --cov=source --cov-report=xml --cov-branch
+        pytest -v --cov=source --cov-report=xml --cov-branch --junitxml=junit.xml -o junit_family=legacy
+
+    - name: Upload test results to Codecov
+      if: ${{ !cancelled() }}
+      uses: codecov/test-results-action@v1
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        fail_ci_if_error: true
 
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v5
@@ -40,4 +47,4 @@ jobs:
         file: ./coverage.xml
         flags: unittests
         name: codecov-umbrella
-        fail_ci_if_error: false 
+        fail_ci_if_error: true
