@@ -1,3 +1,5 @@
 garminconnect>=0.2.27
 APScheduler>=3.11.0
 croniter>=6.0.0
+pytest>=8.0.0
+pytest-cov>=4.1.0
