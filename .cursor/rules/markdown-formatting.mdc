@@ -1,0 +1,114 @@
+---
+description: Editing or generating markdown files.
+globs: 
+alwaysApply: false
+---
+# Markdown Formatting Rule
+
+Enforce proper markdown formatting standards to prevent linting errors.
+
+<rule>
+name: markdown_formatting
+description: Ensure proper markdown formatting including blank lines around code blocks
+filters:
+  # Match markdown files
+  - type: file_extension
+    pattern: "\\.md$"
+  # Match code generation or editing events
+  - type: event
+    pattern: "code_generation|code_edit"
+
+actions:
+  - type: guide
+    message: |
+      ## Markdown Formatting Guidelines
+
+      **ALWAYS INCLUDE** blank lines around:
+      - Fenced code blocks (```)
+      - Headers (# ## ###)
+      - Lists when preceded/followed by paragraphs
+      - Tables
+
+      **CODE BLOCK FORMATTING:**
+      - Always add blank line before opening ```
+      - Always add blank line after closing ```
+      - Use specific language tags (```bash, ```python, ```json, etc.)
+
+      **HEADER FORMATTING:**
+      - Always add blank line before headers (except at start of file)
+      - Always add blank line after headers
+
+      **LIST FORMATTING:**
+      - Add blank line before lists when preceded by paragraphs
+      - Add blank line after lists when followed by paragraphs
+      - Use consistent bullet style (- for unordered lists)
+
+      **TABLE FORMATTING:**
+      - Always add blank line before tables
+      - Always add blank line after tables
+      - Use proper table syntax with header separators
+      - Align columns consistently
+
+examples:
+  - input: |
+      # BAD: No blank lines around code block
+      Here's how to run it:
+      ```bash
+      docker run example
+      ```
+      The command will start the container.
+    output: |
+      # GOOD: Proper blank lines around code block
+      Here's how to run it:
+
+      ```bash
+      docker run example
+      ```
+
+      The command will start the container.
+
+  - input: |
+      # BAD: No blank line before header
+      Some text here.
+      ## Configuration
+      More text here.
+    output: |
+      # GOOD: Proper blank line before header
+      Some text here.
+
+      ## Configuration
+
+      More text here.
+
+  - input: |
+      # BAD: No language specified
+      ```
+      docker run example
+      ```
+    output: |
+      # GOOD: Language specified
+      ```bash
+      docker run example
+      ```
+
+  - input: |
+      # BAD: No blank lines around table
+      Here are the settings:
+      | Variable | Description |
+      |----------|-------------|
+      | `USERNAME` | Your username |
+      More text follows.
+    output: |
+      # GOOD: Proper blank lines around table
+      Here are the settings:
+
+      | Variable | Description |
+      |----------|-------------|
+      | `USERNAME` | Your username |
+
+      More text follows.
+
+metadata:
+  priority: high
+  version: 1.0
+</rule>

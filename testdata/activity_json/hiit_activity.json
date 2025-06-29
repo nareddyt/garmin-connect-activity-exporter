@@ -1,0 +1,108 @@
+{
+  "activityId": 11223344556,
+  "activityName": "High Intensity Circuit Training",
+  "startTimeLocal": "2024-09-14 03:30:00",
+  "startTimeGMT": "2024-09-14 07:30:00",
+  "activityType": {
+    "typeId": 180,
+    "typeKey": "hiit",
+    "parentTypeId": 29,
+    "isHidden": false,
+    "restricted": false,
+    "trimmable": false
+  },
+  "eventType": {
+    "typeId": 9,
+    "typeKey": "uncategorized",
+    "sortOrder": 10
+  },
+  "distance": 0.0,
+  "duration": 1800.556884765625,
+  "elapsedDuration": 1800.556884765625,
+  "movingDuration": 1800.556884765625,
+  "averageSpeed": 0.0,
+  "hasPolyline": false,
+  "hasImages": false,
+  "ownerId": 12345678,
+  "ownerDisplayName": "test-user-135",
+  "ownerFullName": "HIIT Helen",
+  "ownerProfileImageUrlSmall": "https://example.com/profile-small.png",
+  "ownerProfileImageUrlMedium": "https://example.com/profile-medium.png",
+  "ownerProfileImageUrlLarge": "https://example.com/profile-large.png",
+  "calories": 385.0,
+  "bmrCalories": 42.0,
+  "averageHR": 155.0,
+  "maxHR": 185.0,
+  "steps": 32,
+  "userRoles": [
+    "SCOPE_CONNECT_READ",
+    "SCOPE_CONNECT_WRITE",
+    "ROLE_CONNECTUSER",
+    "ROLE_FITNESS_USER",
+    "ROLE_WELLNESS_USER",
+    "ROLE_OUTDOOR_USER"
+  ],
+  "privacy": {
+    "typeId": 1,
+    "typeKey": "public"
+  },
+  "userPro": false,
+  "hasVideo": false,
+  "timeZoneId": 152,
+  "beginTimestamp": 1726296600000,
+  "sportTypeId": 62,
+  "deviceId": 1234567890,
+  "summarizedExerciseSets": [
+    {
+      "category": "UNKNOWN",
+      "reps": 18,
+      "volume": 0,
+      "duration": 1800556.884765625,
+      "sets": 1
+    }
+  ],
+  "summarizedDiveInfo": {
+    "summarizedDiveGases": []
+  },
+  "manufacturer": "GARMIN",
+  "lapCount": 1,
+  "waterEstimated": 320.0,
+  "totalSets": 1,
+  "activeSets": 1,
+  "totalReps": 18,
+  "minActivityLapDuration": 1800.556884765625,
+  "splitSummaries": [
+    {
+      "noOfSplits": 1,
+      "duration": 1800.556884765625,
+      "splitType": "WORKOUT_ROUND",
+      "numClimbSends": 0,
+      "maxDistance": 0,
+      "distance": 0.0,
+      "averageSpeed": 0.0,
+      "numFalls": 0,
+      "avgStress": 1.0
+    }
+  ],
+  "hasSplits": false,
+  "moderateIntensityMinutes": 5,
+  "vigorousIntensityMinutes": 25,
+  "differenceBodyBattery": -12,
+  "hasHeatMap": false,
+  "hrTimeInZone_1": 180.801,
+  "hrTimeInZone_2": 360.845,
+  "hrTimeInZone_3": 720.907,
+  "hrTimeInZone_4": 480.0,
+  "hrTimeInZone_5": 58.0,
+  "endTimeGMT": "2024-09-14 08:00:00",
+  "qualifyingDive": false,
+  "purposeful": false,
+  "pr": false,
+  "manualActivity": false,
+  "autoCalcCalories": false,
+  "elevationCorrected": false,
+  "atpActivity": false,
+  "favorite": false,
+  "decoDive": false,
+  "parent": false
+} 

@@ -1,0 +1,89 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Minimal Comments Rule
+
+Enforce minimal, purposeful commenting in generated code. Code should be self-documenting through clear naming and structure.
+
+<rule>
+name: minimal_comments
+description: Minimize unnecessary comments in favor of self-documenting code
+filters:
+  # Match code generation or editing events
+  - type: event
+    pattern: "code_generation|code_edit"
+
+actions:
+  - type: guide
+    message: |
+      ## Comment Guidelines
+
+      **AVOID** these unnecessary comment types:
+      - Obvious explanations of what code does
+      - Redundant descriptions of simple operations
+      - Comments that duplicate variable/function names
+      - Auto-generated boilerplate comments
+
+      **ONLY ADD** comments for:
+      - Complex business logic that isn't immediately clear
+      - Non-obvious algorithmic decisions
+      - External dependencies or API quirks
+      - Regulatory/compliance requirements
+      - Performance considerations
+
+      **PREFER** self-documenting alternatives:
+      - Descriptive variable and function names
+      - Small, focused functions with clear purposes
+      - Extracting complex logic into well-named helper functions
+      - Using type hints/annotations where applicable
+
+examples:
+  - input: |
+      # BAD: Unnecessary comments
+      # Initialize the counter to zero
+      counter = 0
+      
+      # Loop through each item in the list
+      for item in items:
+          # Check if item is valid
+          if item.is_valid():
+              # Increment the counter
+              counter += 1
+      
+      # Return the final count
+      return counter
+    output: |
+      # GOOD: Self-documenting code
+      def count_valid_items(items):
+          valid_count = 0
+          for item in items:
+              if item.is_valid():
+                  valid_count += 1
+          return valid_count
+
+  - input: |
+      # BAD: Obvious comment
+      # Get user by ID
+      def get_user(id):
+          return database.query(f"SELECT * FROM users WHERE id = {id}")
+    output: |
+      # GOOD: No comment needed, function name is clear
+      def get_user(user_id: int) -> User:
+          return database.query(f"SELECT * FROM users WHERE id = {user_id}")
+
+  - input: |
+      # ACCEPTABLE: Explains non-obvious business logic
+      def calculate_shipping_cost(weight, distance):
+          # Apply 15% surcharge for international shipments over 500km
+          # as mandated by shipping regulation SR-2024-03
+          if distance > 500:
+              base_cost = weight * 0.05 * distance
+              return base_cost * 1.15
+          return weight * 0.05 * distance
+
+metadata:
+  priority: high
+  version: 1.0
+</rule>

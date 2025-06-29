@@ -1,0 +1,105 @@
+---
+description: Generating python code.
+globs: 
+alwaysApply: false
+---
+# Python Type Hints Rule
+
+Enforce proper type hints in generated Python code following VS Code Python extension recommendations.
+
+<rule>
+name: python_type_hints
+description: Include appropriate type hints for Python functions while avoiding obvious annotations
+filters:
+  # Match Python files
+  - type: file_extension
+    pattern: "\\.py$"
+  # Match code generation or editing events
+  - type: event
+    pattern: "code_generation|code_edit"
+
+actions:
+  - type: guide
+    message: |
+      ## Type Hint Guidelines
+
+      **ALWAYS INCLUDE** type hints for:
+      - Function parameters (except self/cls)
+      - Function return types
+      - Class attributes when not obvious from assignment
+      - Variable declarations when type is ambiguous
+
+      **AVOID** type hints for:
+      - Constructor assignments with obvious types (`user = User()`)
+      - Simple literal assignments (`count = 0`, `name = "test"`)
+      - Loop variables with clear iteration types
+
+      **IMPORT REQUIREMENTS:**
+      - Use `from typing import` for generic types (List, Dict, Optional, Union, etc.)
+      - Use `from __future__ import annotations` for forward references when needed
+      - Prefer built-in types over typing equivalents in Python 3.9+ (`list` vs `List`)
+
+      **BEST PRACTICES:**
+      - Use `Optional[T]` or `T | None` for nullable types
+      - Use `Union[T, U]` or `T | U` for multiple possible types
+      - Use generics for containers: `list[str]`, `dict[str, int]`
+      - Use Protocol for structural typing when appropriate
+
+examples:
+  - input: |
+      # BAD: Missing type hints
+      def process_data(data, user_id, is_active=True):
+          result = []
+          for item in data:
+              if item.valid:
+                  result.append(item.value)
+          return result
+    output: |
+      # GOOD: Proper type hints
+      def process_data(data: list[dict], user_id: int, is_active: bool = True) -> list[str]:
+          result: list[str] = []
+          for item in data:
+              if item.valid:
+                  result.append(item.value)
+          return result
+
+  - input: |
+      # BAD: Obvious type annotations
+      user: User = User()
+      count: int = 0
+      items: list[str] = []
+    output: |
+      # GOOD: Avoid obvious annotations
+      user = User()
+      count = 0
+      items: list[str] = []
+
+  - input: |
+      # BAD: Missing return type and parameter types
+      def get_user_data(user_id, include_profile=False):
+          pass
+    output: |
+      # GOOD: Complete type annotations
+      from typing import Optional
+      
+      def get_user_data(user_id: int, include_profile: bool = False) -> Optional[dict[str, any]]:
+          pass
+
+  - input: |
+      # GOOD: Class with proper type hints
+      class UserManager:
+          def __init__(self, db_connection: Database) -> None:
+              self.db = db_connection
+              self.cache: dict[int, User] = {}
+          
+          def find_user(self, user_id: int) -> Optional[User]:
+              return self.cache.get(user_id)
+          
+          def add_user(self, user: User) -> bool:
+              self.cache[user.id] = user
+              return True
+
+metadata:
+  priority: high
+  version: 1.0
+</rule>

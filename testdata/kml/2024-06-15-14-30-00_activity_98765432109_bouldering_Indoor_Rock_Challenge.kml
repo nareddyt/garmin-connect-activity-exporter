@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml
+  xsi:schemaLocation="http://earth.google.com/kml/2.1 http://earth.google.com/kml2.1.xsd"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://earth.google.com/kml/2.1">
+  <Folder>
+    <n>Indoor Rock Challenge</n>
+    <Folder>
+      <n>Laps</n>
+      <description>Laps, start and end splits recorded in the activity.</description>
+      <Placemark>
+        <n>Lap 1</n>
+        <description>&lt;table width = "320"&gt;&lt;tr&gt;&lt;td&gt;Time:&lt;/td&gt;&lt;td&gt;01:30:00&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Distance:&lt;/td&gt;&lt;td&gt;null Miles &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Elevation Gain:&lt;/td&gt;&lt;td&gt;--&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Elevation Loss:&lt;/td&gt;&lt;td&gt;--&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Max Speed:&lt;/td&gt;&lt;td&gt;--&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</description>
+        <Style>
+          <IconStyle>
+            <scale>1.0</scale>
+            <Icon>
+              <href>http://maps.google.com/mapfiles/kml/shapes/flag.png</href>
+            </Icon>
+            <hotSpot x="0.45" xunits="fraction" y="0.0" yunits="fraction"/>
+          </IconStyle>
+        </Style>
+        <Point>
+          <coordinates>null,null</coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
+    <Folder>
+      <n>Track Points</n>
+      <description>Toggle to enable or disable animation of the activity.</description>
+      <Style>
+        <ListStyle>
+          <listItemType>checkHideChildren</listItemType>
+        </ListStyle>
+      </Style>
+    </Folder>
+  </Folder>
+</kml> 

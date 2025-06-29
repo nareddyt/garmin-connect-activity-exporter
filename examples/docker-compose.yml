@@ -1,0 +1,21 @@
+services:
+  garmin-connect-activity-exporter:
+    build: ../
+    container_name: garmin-connect-activity-exporter
+    restart: unless-stopped
+    environment:
+      # Set these sensitive values via a `.env` file.
+      # See https://www.warp.dev/terminus/docker-compose-env-file for examples.
+      - GARMIN_USERNAME=${GARMIN_USERNAME}
+      - GARMIN_PASSWORD=${GARMIN_PASSWORD}
+
+      # Also set your timezone in the `.env` file, or directly here.
+      - TZ=${TZ}
+
+      # Other optional environment variables can be set here statically. For example:
+      - CRON_SCHEDULE=*/5 * * * *
+      - LOG_LEVEL=INFO
+    
+    volumes:
+      - ../garmin_downloads:/app/garmin_downloads
+      - ../garmin_session:/app/garmin_session

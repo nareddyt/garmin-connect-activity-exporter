@@ -1,0 +1,112 @@
+{
+  "activityId": 56789012345,
+  "activityName": "Upper Body Strength",
+  "startTimeLocal": "2024-04-08 13:00:00",
+  "startTimeGMT": "2024-04-08 17:00:00",
+  "activityType": {
+    "typeId": 13,
+    "typeKey": "strength_training",
+    "parentTypeId": 29,
+    "isHidden": false,
+    "restricted": false,
+    "trimmable": false
+  },
+  "eventType": {
+    "typeId": 9,
+    "typeKey": "uncategorized",
+    "sortOrder": 10
+  },
+  "distance": 0.0,
+  "duration": 2700.447021484375,
+  "elapsedDuration": 2700.447021484375,
+  "movingDuration": 680.8289794921875,
+  "averageSpeed": 0.0,
+  "hasPolyline": false,
+  "hasImages": false,
+  "ownerId": 12345678,
+  "ownerDisplayName": "test-user-456",
+  "ownerFullName": "Strong Sam",
+  "ownerProfileImageUrlSmall": "https://example.com/profile-small.png",
+  "ownerProfileImageUrlMedium": "https://example.com/profile-medium.png",
+  "ownerProfileImageUrlLarge": "https://example.com/profile-large.png",
+  "calories": 280.0,
+  "bmrCalories": 63.0,
+  "averageHR": 120.0,
+  "maxHR": 155.0,
+  "steps": 285,
+  "userRoles": [
+    "SCOPE_CONNECT_READ",
+    "SCOPE_CONNECT_WRITE",
+    "ROLE_CONNECTUSER",
+    "ROLE_FITNESS_USER",
+    "ROLE_WELLNESS_USER",
+    "ROLE_OUTDOOR_USER"
+  ],
+  "privacy": {
+    "typeId": 3,
+    "typeKey": "subscribers"
+  },
+  "userPro": false,
+  "hasVideo": false,
+  "timeZoneId": 152,
+  "beginTimestamp": 1712595600000,
+  "sportTypeId": 10,
+  "deviceId": 1234567890,
+  "summarizedExerciseSets": [
+    {
+      "category": "BENCH_PRESS",
+      "reps": 30,
+      "volume": 0,
+      "duration": 180000.00535583496,
+      "sets": 3
+    },
+    {
+      "category": "CURL",
+      "reps": 45,
+      "volume": 0,
+      "duration": 240000.00079345703,
+      "sets": 3
+    },
+    {
+      "category": "LATERAL_RAISE",
+      "reps": 24,
+      "volume": 0,
+      "duration": 150000.00231933594,
+      "sets": 2
+    },
+    {
+      "category": "PULL_UP",
+      "reps": 20,
+      "volume": 0,
+      "duration": 120000.00129699707,
+      "sets": 2
+    }
+  ],
+  "summarizedDiveInfo": {
+    "summarizedDiveGases": []
+  },
+  "manufacturer": "GARMIN",
+  "lapCount": 1,
+  "waterEstimated": 270.0,
+  "totalSets": 10,
+  "activeSets": 10,
+  "totalReps": 119,
+  "minActivityLapDuration": 2700.447021484375,
+  "splitSummaries": [],
+  "hasSplits": false,
+  "moderateIntensityMinutes": 28,
+  "vigorousIntensityMinutes": 2,
+  "differenceBodyBattery": -6,
+  "hasHeatMap": false,
+  "endTimeGMT": "2024-04-08 17:45:00",
+  "qualifyingDive": false,
+  "purposeful": false,
+  "pr": false,
+  "manualActivity": false,
+  "autoCalcCalories": false,
+  "elevationCorrected": false,
+  "atpActivity": false,
+  "favorite": false,
+  "decoDive": false,
+  "parent": false
+} 

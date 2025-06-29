@@ -1,0 +1,91 @@
+{
+  "activityId": 45678901234,
+  "activityName": "Bouldering Session",
+  "startTimeLocal": "2024-03-15 14:30:00",
+  "startTimeGMT": "2024-03-15 18:30:00",
+  "activityType": {
+    "typeId": 174,
+    "typeKey": "bouldering",
+    "parentTypeId": 29,
+    "isHidden": false,
+    "restricted": false,
+    "trimmable": false
+  },
+  "eventType": {
+    "typeId": 9,
+    "typeKey": "uncategorized",
+    "sortOrder": 10
+  },
+  "duration": 3601.535888671875,
+  "elapsedDuration": 3601.535888671875,
+  "movingDuration": 0.0,
+  "hasPolyline": false,
+  "hasImages": false,
+  "ownerId": 12345678,
+  "ownerDisplayName": "test-user-123",
+  "ownerFullName": "Boulder Mike",
+  "ownerProfileImageUrlSmall": "https://example.com/profile-small.png",
+  "ownerProfileImageUrlMedium": "https://example.com/profile-medium.png",
+  "ownerProfileImageUrlLarge": "https://example.com/profile-large.png",
+  "calories": 420.0,
+  "bmrCalories": 85.0,
+  "averageHR": 135.0,
+  "maxHR": 165.0,
+  "steps": 890,
+  "userRoles": [
+    "SCOPE_CONNECT_READ",
+    "SCOPE_CONNECT_WRITE",
+    "ROLE_CONNECTUSER",
+    "ROLE_FITNESS_USER",
+    "ROLE_WELLNESS_USER",
+    "ROLE_OUTDOOR_USER"
+  ],
+  "privacy": {
+    "typeId": 1,
+    "typeKey": "public"
+  },
+  "userPro": false,
+  "hasVideo": false,
+  "timeZoneId": 152,
+  "beginTimestamp": 1710518200000,
+  "sportTypeId": 31,
+  "deviceId": 1234567890,
+  "summarizedDiveInfo": {
+    "summarizedDiveGases": []
+  },
+  "manufacturer": "GARMIN",
+  "lapCount": 1,
+  "waterEstimated": 350.0,
+  "minActivityLapDuration": 3601.535888671875,
+  "splitSummaries": [
+    {
+      "noOfSplits": 1,
+      "maxGradeValue": {
+        "sortOrder": 5,
+        "valueKey": "V4",
+        "scale": "VERMIN"
+      },
+      "duration": 3601.535888671875,
+      "splitType": "CLIMB_ACTIVE",
+      "numClimbSends": 0,
+      "numFalls": 0,
+      "avgStress": 1.0
+    }
+  ],
+  "hasSplits": true,
+  "moderateIntensityMinutes": 45,
+  "vigorousIntensityMinutes": 8,
+  "differenceBodyBattery": -9,
+  "hasHeatMap": false,
+  "endTimeGMT": "2024-03-15 19:30:01",
+  "qualifyingDive": false,
+  "purposeful": false,
+  "pr": false,
+  "manualActivity": false,
+  "autoCalcCalories": false,
+  "elevationCorrected": false,
+  "atpActivity": false,
+  "favorite": false,
+  "decoDive": false,
+  "parent": false
+} 

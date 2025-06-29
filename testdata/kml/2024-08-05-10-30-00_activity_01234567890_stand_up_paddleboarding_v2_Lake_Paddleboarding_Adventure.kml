@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml
+  xsi:schemaLocation="http://earth.google.com/kml/2.1 http://earth.google.com/kml2.1.xsd"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://earth.google.com/kml/2.1">
+  <Folder>
+    <n>Lake Paddleboarding Adventure</n>
+    <Placemark>
+      <n>Track</n>
+      <Style>
+        <LineStyle>
+          <color>FF0000FF</color>
+          <width>3.0</width>
+        </LineStyle>
+      </Style>
+      <LineString>
+        <extrude>false</extrude>
+        <tessellate>true</tessellate>
+        <altitudeMode>clampToGround</altitudeMode>
+        <coordinates>-122.430000,37.760000 -122.428000,37.761000 -122.426000,37.762000 -122.424000,37.761500 -122.426000,37.760500</coordinates>
+      </LineString>
+    </Placemark>
+    <Folder>
+      <n>Laps</n>
+      <description>Laps, start and end splits recorded in the activity.</description>
+      <Placemark>
+        <n>Start</n>
+        <description>&lt;table width = "320"&gt;&lt;tr&gt;&lt;td colspan="2"&gt; &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="2"&gt;Mon Aug 05 10:30:00 GMT 2024 by test-user&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="2"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Activity Type:&lt;/td&gt;&lt;td&gt;stand_up_paddleboarding_v2&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Event type:&lt;/td&gt;&lt;td&gt;uncategorized&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Distance:&lt;/td&gt;&lt;td&gt;3.2 km &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Time :&lt;/td&gt;&lt;td&gt;0:35:00&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="2"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</description>
+        <Style>
+          <IconStyle>
+            <scale>1.3</scale>
+            <Icon>
+              <href>explore\image\main\icons\kml\grn-play.png</href>
+            </Icon>
+            <hotSpot x="0.5" xunits="fraction" y="0.0" yunits="fraction"/>
+          </IconStyle>
+        </Style>
+        <Point>
+          <coordinates>-122.430000, 37.760000</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <n>End</n>
+        <description>&lt;table width = "320"&gt;&lt;tr&gt;&lt;td colspan="2"&gt; &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="2"&gt;Mon Aug 05 11:05:00 GMT 2024 by test-user&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="2"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Activity Type:&lt;/td&gt;&lt;td&gt;stand_up_paddleboarding_v2&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Event type:&lt;/td&gt;&lt;td&gt;uncategorized&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Distance:&lt;/td&gt;&lt;td&gt;3.2 km &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Time :&lt;/td&gt;&lt;td&gt;0:35:00&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="2"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</description>
+        <Style>
+          <IconStyle>
+            <scale>1.0</scale>
+            <Icon>
+              <href>http://maps.google.com/mapfiles/kml/paddle/red-square.png</href>
+            </Icon>
+            <hotSpot x="0.45" xunits="fraction" y="0.0" yunits="fraction"/>
+          </IconStyle>
+        </Style>
+        <Point>
+          <coordinates>-122.426000, 37.760500</coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
+    <Folder>
+      <n>Track Points</n>
+      <description>Toggle to enable or disable animation of the activity.</description>
+      <Style>
+        <ListStyle>
+          <listItemType>checkHideChildren</listItemType>
+        </ListStyle>
+      </Style>
+      <Placemark>
+        <TimeSpan>
+          <begin>2024-08-05T10:30:00-07:00</begin>
+          <end>2024-08-05T10:30:00-07:00</end>
+        </TimeSpan>
+        <Style>
+          <IconStyle>
+            <color>FF00FFFF</color>
+            <scale>0.9</scale>
+            <Icon>
+              <href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href>
+            </Icon>
+          </IconStyle>
+        </Style>
+        <Point>
+          <altitudeMode>clampToGround</altitudeMode>
+          <coordinates>-122.430000,37.760000, 0.0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <TimeSpan>
+          <begin>2024-08-05T10:45:00-07:00</begin>
+          <end>2024-08-05T10:45:00-07:00</end>
+        </TimeSpan>
+        <Style>
+          <IconStyle>
+            <color>FF00FFFF</color>
+            <scale>0.9</scale>
+            <Icon>
+              <href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href>
+            </Icon>
+          </IconStyle>
+        </Style>
+        <Point>
+          <altitudeMode>clampToGround</altitudeMode>
+          <coordinates>-122.426000,37.762000, 0.0</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <TimeSpan>
+          <begin>2024-08-05T11:05:00-07:00</begin>
+          <end>2024-08-05T11:05:00-07:00</end>
+        </TimeSpan>
+        <Style>
+          <IconStyle>
+            <color>FF00FFFF</color>
+            <scale>0.9</scale>
+            <Icon>
+              <href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href>
+            </Icon>
+          </IconStyle>
+        </Style>
+        <Point>
+          <altitudeMode>clampToGround</altitudeMode>
+          <coordinates>-122.426000,37.760500, 0.0</coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
+  </Folder>
+</kml> 
