@@ -98,7 +98,7 @@ The basic Docker command stops when your computer restarts. For continuous opera
 
 Create a `.env` file under the `examples/` directory with the following content:
 
-```
+```bash
 GARMIN_USERNAME='your-username'
 GARMIN_PASSWORD='your-password'
 TZ='https://en.wikipedia.org/wiki/List_of_tz_database_time_zones'
