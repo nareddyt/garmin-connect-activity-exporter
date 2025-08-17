@@ -96,15 +96,23 @@ The basic Docker command stops when your computer restarts. For continuous opera
 
 **Docker Compose** (recommended):
 
+Create a `.env` file under the `examples/` directory with the following content:
+
+```
+GARMIN_USERNAME='your-username'
+GARMIN_PASSWORD='your-password'
+TZ='https://en.wikipedia.org/wiki/List_of_tz_database_time_zones'
+```
+
+Then run:
+
 ```bash
-docker compose --file examples/docker-compose.yml up -d
+docker compose --file examples/docker-compose.yaml up -d
 ```
 
 **Kubernetes** (for clusters):
 
-```bash
-kubectl apply -f examples/deployment.yaml
-```
+A sample kubernetes deployment manifest is provided in `examples/kubernets.yaml`.
 
 ## How It Works
 
