@@ -3,3 +3,4 @@ APScheduler>=3.11.0
 croniter>=6.0.0
 pytest>=8.0.0
 pytest-cov>=4.1.0
+humanfriendly>=10.0

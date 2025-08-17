@@ -8,7 +8,7 @@ naming convention.
 """
 
 from dataclasses import dataclass
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 import difflib
 from pathlib import Path
 from typing import Any, Dict, Optional, Set
@@ -25,6 +25,7 @@ class FileManagerConfig:
     excluded_file_types: Set[FileType]
     start_date: Optional[datetime]
     end_date: Optional[datetime]
+    minimum_activity_age: Optional[timedelta] = None
 
 class FileManager:
     config: FileManagerConfig
@@ -95,6 +96,13 @@ class FileManager:
             logger.debug(f"Skipping activity after end date")
             return None
         
+        if self.config.minimum_activity_age is not None:
+            now_utc: datetime = datetime.now(timezone.utc)
+            cutoff_time: datetime = now_utc - self.config.minimum_activity_age
+            if activity.start_time_gmt > cutoff_time:
+                logger.debug(f"Skipping activity newer than minimum age")
+                return None
+
         if (file_type == FileType.GPX or file_type == FileType.TCX) and not activity.hasPolyline:
             logger.debug(f"Skipping activity GPS data without polyline data")
             return None

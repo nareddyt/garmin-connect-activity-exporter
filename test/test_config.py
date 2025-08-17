@@ -8,7 +8,7 @@ and provide meaningful error messages for invalid values.
 
 import os
 import pytest
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from typing import Dict, Any, Optional, Set
 from unittest.mock import patch
 
@@ -239,6 +239,22 @@ class TestConfigValidParsing:
                     f"{description}: Expected {key}={expected_value}, got {actual_value}"
                 )
 
+    @pytest.mark.parametrize("duration_str,expected_td", [
+        ("90s", timedelta(seconds=90)),
+        ("50m", timedelta(minutes=50)),
+        ("1.5h", timedelta(hours=1.5)),
+        ("2d", timedelta(days=2)),
+    ])
+    def test_min_activity_age_parsing(self, duration_str: str, expected_td: timedelta) -> None:
+        """Test that MIN_ACTIVITY_AGE is parsed into a timedelta correctly."""
+        with patch.dict(os.environ, {
+            "GARMIN_USERNAME": "test",
+            "GARMIN_PASSWORD": "test",
+            "MIN_ACTIVITY_AGE": duration_str,
+        }, clear=True):
+            config = Config.from_environment()
+            assert config.file_manager_config.minimum_activity_age == expected_td
+
 
 class TestConfigErrorHandling:
     """Test cases for configuration error handling."""
@@ -363,6 +379,29 @@ class TestConfigErrorHandling:
         description: str
     ) -> None:
         """Test that invalid configuration raises appropriate errors."""
+        with patch.dict(os.environ, env_vars, clear=True):
+            with pytest.raises(ValueError, match=expected_error):
+                Config.from_environment()
+
+    @pytest.mark.parametrize("env_vars,expected_error", [
+        (
+            {
+                "GARMIN_USERNAME": "test",
+                "GARMIN_PASSWORD": "test",
+                "MIN_ACTIVITY_AGE": "-5m",
+            },
+            "Invalid MIN_ACTIVITY_AGE value",
+        ),
+        (
+            {
+                "GARMIN_USERNAME": "test",
+                "GARMIN_PASSWORD": "test",
+                "MIN_ACTIVITY_AGE": "garbage",
+            },
+            "Invalid MIN_ACTIVITY_AGE value",
+        ),
+    ])
+    def test_min_activity_age_errors(self, env_vars: Dict[str, str], expected_error: str) -> None:
         with patch.dict(os.environ, env_vars, clear=True):
             with pytest.raises(ValueError, match=expected_error):
                 Config.from_environment()

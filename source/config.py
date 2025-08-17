@@ -5,7 +5,8 @@ Configuration management for Garmin GPX Exporter.
 
 import os
 import sys
-from datetime import datetime
+from datetime import datetime, timedelta
+from humanfriendly import parse_timespan
 from pathlib import Path
 from dataclasses import dataclass
 from typing import Optional, Set
@@ -122,6 +123,23 @@ class Config:
         start_date: Optional[datetime] = _parse_date_env(os.getenv('START_DATE'), 'START_DATE')
         end_date: Optional[datetime] = _parse_date_env(os.getenv('END_DATE'), 'END_DATE', is_end_date=True)
         
+        def _parse_duration_env(env_name: str) -> Optional[timedelta]:
+            env_value: Optional[str] = os.getenv(env_name)
+            if not env_value:
+                return None
+            try:
+                seconds: float = parse_timespan(env_value)
+            except Exception:
+                raise ValueError(
+                    f"Invalid {env_name} value '{env_value}': must be a valid duration like '5m', '6h', '2d'"
+                )
+            if seconds < 0:
+                raise ValueError(f"Invalid {env_name} value '{env_value}': must be non-negative")
+            return timedelta(seconds=seconds)
+
+        # Activity filtering - minimum activity age (relative to now)
+        minimum_activity_age: Optional[timedelta] = _parse_duration_env('MIN_ACTIVITY_AGE')
+
         # Activity filtering - excluded types
         excluded_activity_types: Set[str] = set()
         excluded_types_env: Optional[str] = os.getenv('EXCLUDED_ACTIVITY_TYPES')
@@ -169,6 +187,7 @@ class Config:
                 excluded_activity_types=excluded_activity_types,
                 excluded_file_types=excluded_file_types,
                 start_date=start_date,
-                end_date=end_date
+                end_date=end_date,
+                minimum_activity_age=minimum_activity_age,
             )
         ) 

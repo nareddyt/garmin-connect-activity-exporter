@@ -8,7 +8,7 @@ re-downloading, as well as all filtering logic.
 
 import json
 import pytest
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from typing import Dict, Any, Set, Optional
 from unittest.mock import Mock
@@ -203,6 +203,22 @@ class TestFileManager:
             FileType.GPX,
             "expected_path",
             "Activity within date range"
+        ),
+        # Test minimum activity age filtering (activity too new relative to huge minimum age)
+        (
+            {"minimum_activity_age": timedelta(days=36500)},  # ~100 years
+            "run_activity_data",  # 2024-01-15
+            FileType.GPX,
+            None,
+            "Activity newer than minimum activity age"
+        ),
+        # Test minimum activity age filtering (activity is old enough relative to a small minimum age)
+        (
+            {"minimum_activity_age": timedelta(minutes=1)},
+            "run_activity_data",  # 2024-01-15
+            FileType.GPX,
+            "expected_path",
+            "Activity older than minimum activity age"
         ),
     ])
     def test_filtering_logic(
