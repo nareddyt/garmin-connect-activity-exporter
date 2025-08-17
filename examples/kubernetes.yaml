@@ -1,0 +1,92 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: garmin-connect
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: garmin-connect-creds
+  namespace: garmin-connect
+type: Opaque
+stringData:
+  username: "<your-garmin-email>" # Replace with your Garmin email
+  password: "<your-garmin-password>" # Replace with your Garmin password
+---
+# Assumes you have a storage provisioner installed in your cluster.
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: garmin-downloads
+  namespace: garmin-connect
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+---
+# Assumes you have a storage provisioner installed in your cluster.
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: garmin-session
+  namespace: garmin-connect
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app
+  namespace: garmin-connect
+  labels:
+    app.kubernetes.io/name: garmin-connect
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: garmin-connect
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: garmin-connect
+    spec:
+      containers:
+      - name: garmin-connect-activity-exporter
+        image: ghcr.io/nareddyt/garmin-connect-activity-exporter:v1
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: GARMIN_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: garmin-connect-creds
+              key: username
+        - name: GARMIN_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: garmin-connect-creds
+              key: password
+        # Add any other environment variables here as needed.
+        - name: TZ
+          value: UTC  # Replace with your timezone
+        - name: RUN_IMMEDIATELY_ON_STARTUP
+          value: "true" # Set to 'false' after initial deployment and testing to avoid rate limiting on crashloops
+        volumeMounts:
+        - name: garmin-downloads
+          mountPath: /app/garmin_downloads
+        - name: garmin-session
+          mountPath: /app/garmin_session
+      volumes:
+      - name: garmin-downloads
+        persistentVolumeClaim:
+          claimName: garmin-downloads
+      - name: garmin-session
+        persistentVolumeClaim:
+          claimName: garmin-session

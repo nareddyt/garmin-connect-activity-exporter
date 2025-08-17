@@ -96,15 +96,23 @@ The basic Docker command stops when your computer restarts. For continuous opera
 
 **Docker Compose** (recommended):
 
+Create a `.env` file under the `examples/` directory with the following content:
+
 ```bash
-docker compose --file examples/docker-compose.yml up -d
+GARMIN_USERNAME='your-username'
+GARMIN_PASSWORD='your-password'
+TZ='https://en.wikipedia.org/wiki/List_of_tz_database_time_zones'
+```
+
+Then run:
+
+```bash
+docker compose --file examples/docker-compose.yaml up -d
 ```
 
 **Kubernetes** (for clusters):
 
-```bash
-kubectl apply -f examples/deployment.yaml
-```
+A sample kubernetes deployment manifest is provided in `examples/kubernetes.yaml`.
 
 ## How It Works
 
@@ -166,6 +174,7 @@ You can configure this exporter to:
 - Not download activities of specific types via `EXCLUDED_ACTIVITY_TYPES`.
 - Not download specific activities via `EXCLUDED_ACTIVITY_IDS`.
 - Not download GPX or TCX file types via `EXCLUDED_FILE_TYPES`.
+- Skip downloading very new activities via `MIN_ACTIVITY_AGE` (giving you time to edit/trim the activities in Garmin Connect before they are downloaded).
 
 ### Automatic Re-downloads
 
@@ -234,3 +243,4 @@ Customize the exporter's behavior with environment variables.
 | `EXCLUDED_ACTIVITY_TYPES` | Skip these activity types | `None` | `indoor_cycling,treadmill_running` |
 | `EXCLUDED_ACTIVITY_IDS` | Skip these specific activities | `None` | `12345,67890` |
 | `EXCLUDED_FILE_TYPES` | Skip these file types (activity_json cannot be excluded) | `None` | `tcx,gpx` |
+| `MIN_ACTIVITY_AGE` | Only download activities older than this duration (relative to now). Supports `s`, `m`, `h`, `d`. | `None` | `50m`, `6h`, `2d` |
