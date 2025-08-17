@@ -112,7 +112,7 @@ docker compose --file examples/docker-compose.yaml up -d
 
 **Kubernetes** (for clusters):
 
-A sample kubernetes deployment manifest is provided in `examples/kubernets.yaml`.
+A sample kubernetes deployment manifest is provided in `examples/kubernetes.yaml`.
 
 ## How It Works
 
