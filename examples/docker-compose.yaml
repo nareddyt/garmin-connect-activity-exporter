@@ -1,7 +1,7 @@
 services:
   garmin-connect-activity-exporter:
     container_name: garmin-connect-activity-exporter
-    image: ghcr.io/nareddyt/garmin-connect-activity-exporter:v1
+    image: ghcr.io/nareddyt/garmin-connect-activity-exporter:v1.0
     restart: unless-stopped
     environment:
       # Set these sensitive values via a `.env` file.

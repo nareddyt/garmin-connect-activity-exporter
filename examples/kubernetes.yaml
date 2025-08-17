@@ -60,7 +60,7 @@ spec:
     spec:
       containers:
       - name: garmin-connect-activity-exporter
-        image: ghcr.io/nareddyt/garmin-connect-activity-exporter:v1
+        image: ghcr.io/nareddyt/garmin-connect-activity-exporter:v1.0
         imagePullPolicy: IfNotPresent
         env:
         - name: GARMIN_USERNAME
