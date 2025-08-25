@@ -74,7 +74,7 @@ class Exporter:
             dir_path.mkdir(parents=True, exist_ok=True)
 
     def _precompute_downloaded_activities(self) -> None:
-        for file_path in self.config.download_directory.glob('**/*'):
+        for file_path in self.config.download_directory.glob('*/*'):
             if file_path.is_file():
                 self.file_manager.add_preexisting_file(file_path)
                 

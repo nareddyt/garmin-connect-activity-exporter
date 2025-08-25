@@ -660,6 +660,11 @@ class TestFileManager:
         assert file_manager.should_ignore_file(Path('/some/path/.gitkeep')) is True
         assert file_manager.should_ignore_file(Path('/some/path/.gitignore')) is True
 
+        # Test generic hidden dotfiles
+        assert file_manager.should_ignore_file(Path('/some/path/.hidden')) is True
+        assert file_manager.should_ignore_file(Path('/some/path/.env')) is True
+        assert file_manager.should_ignore_file(Path('/some/path/.config')) is True
+
     def test_should_ignore_file_temporary_files(
         self,
         default_config: FileManagerConfig,
@@ -715,10 +720,15 @@ class TestFileManager:
         # System file that should be ignored
         ignored_file = download_directory / '.DS_Store'
         ignored_file.write_text('system file')
+
+        # Generic hidden file that should be ignored
+        hidden_file = download_directory / '.random_hidden'
+        hidden_file.write_text('hidden file')
         
         # Add both files
         file_manager.add_preexisting_file(valid_file)
         file_manager.add_preexisting_file(ignored_file)  # Should be silently ignored
+        file_manager.add_preexisting_file(hidden_file)   # Should be silently ignored
         
         # Only the valid file should be tracked
         assert len(file_manager.downloaded_activities) == 1
