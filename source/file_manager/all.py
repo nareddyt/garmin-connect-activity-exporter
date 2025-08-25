@@ -39,13 +39,16 @@ class FileManager:
 
     def should_ignore_file(self, file_path: Path) -> bool:
         """Check if a file should be ignored during processing."""
-        ignored_filenames: Set[str] = {'.DS_Store', 'Thumbs.db', '.gitkeep', '.gitignore'}
+        ignored_filenames: Set[str] = {'Thumbs.db'}
         ignored_extensions: Set[str] = {'.tmp', '.temp', '.swp', '.bak'}
         
         # Ignore system files and temporary files
-        if file_path.name in ignored_filenames:
+        # Any hidden file (dotfile) should be ignored
+        if file_path.name.startswith('.'):
             return True
         if file_path.suffix.lower() in ignored_extensions:
+            return True
+        if file_path.name in ignored_filenames:
             return True
         
         return False
